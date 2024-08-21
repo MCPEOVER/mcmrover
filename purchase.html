@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple - 결제</title>
+    <link rel="stylesheet" href="aaa.css">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">Apple</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">MacBook</a></li>
+            <li><a href="#">IPhone</a></li>
+            <li><a href="#">IPad Air</a></li>
+            <li><a href="#">Apple Watch</a></li>
+            <li><a href="#">AirPots</a></li>
+            <li><a href="#">지원</a></li>
+        </ul>
+    </nav>
+
+    <!-- 결제 섹션 -->
+    <section class="payment">
+        <h1>결제 페이지</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="product">제품 선택</label>
+                <select id="product" name="product">
+                    <option value="iphone">IPhone 16 Pro</option>
+                    <option value="macbook">MacBook 프로</option>
+                    <option value="ipad">아이패드 에어</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">수량</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+            </div>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">주소</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <h1>제품 가격: 3,980,000</h1>
+            <div class="form-group">
+                <label for="payment-method">결제 방법</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="credit-card">신용카드</option>
+                    <option value="bank-transfer">계좌이체</option>
+                    <h1>토스뱅크</h1>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <button type="button" class="cta-button" onclick="submitForm()">결제하기</button>
+        </form>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">애플에 대하여</a>
+            <a href="#">개인정보 보호정책</a>
+            <a href="#">사이트 맵</a>
+        </div>
+    </footer>
+
+    <script>
+        function submitForm() {
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+
+            // URL 파라미터 생성
+            const params = new URLSearchParams({
+                product: product,
+                quantity: quantity,
+                name: name,
+                address: address,
+                paymentMethod: paymentMethod
+            });
+
+            // confirmation.html 페이지로 이동
+            window.location.href = 'confirmation.html?' + params.toString();
+        }
+    </script>
+</body>
+</html>
